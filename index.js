@@ -33,8 +33,16 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
 
     code_array[x] = code_string3;
 
+    let code_string4 = code_array[x].replace(" = ","&");
+
+    code_array[x] = code_string4;
+
+    let code_string5 = code_array[x].replace(" ! ","&");
+
+    code_array[x] = code_string5;
+
     // content of for loop removes any unnecessary characters to simplify the strings of code
-    
+
   }
 
   let content = "";
@@ -54,6 +62,15 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
       // C# comment to TS comment
       
       content += "\n// "+code_bits[1];
+      
+    } else if (code_bits[0] == "string" || code_bits[0] == "int" || code_bits[0] == "double" || code_bits[0] == "char" || code_bits[0] == "bool" || code_bits[0] == "float" || code_bits[0] == "long") {
+
+      /* variable declaration: 
+      [type] variableName = value; -> 
+      let variableName = value; */
+
+      content += "\nlet " + code_bits[1] + " = " + code_bits[2] + ";";
+
       
     }
   }
