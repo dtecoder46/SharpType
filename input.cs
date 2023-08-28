@@ -2,8 +2,8 @@ using System;
 
 class Program {
   public static void Main (string[] args) {
-    Console.Write("Hello");
-    Console.Write("World");
+    string ! hello = "bruh";
+    Console.Write(hello);
     //&bruh
   }
 }
