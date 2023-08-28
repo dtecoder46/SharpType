@@ -1,4 +1,4 @@
 
-console.log("Hello");
-console.log("World");
+let hello = "bruh";
+console.log(hello);
 // bruh
