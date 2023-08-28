@@ -14,7 +14,7 @@
 MIT License (free to use)
 
 ## Project Pages
-- Replit: https://replit.com/@dtecoder46/SharpType
+- Replit: https://replit.com/@dtecoder46/SharpType?v=1
 - Github: https://github.com/dtecoder46/SharpType
 
 ## Description
