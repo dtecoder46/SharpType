@@ -15,7 +15,7 @@ MIT License (free to use)
 
 ## Project Pages
 - Replit: https://replit.com/@dtecoder46/SharpType
-- Github: TBD
+- Github: https://github.com/dtecoder46/SharpType
 
 ## Description
 A JavaScript-based compiler that converts C# into TypeScript that can then be run separately or modified for compatibility with HTML or web frameworks. This is designed to make compiling C# to TS easy to do.
