@@ -37,19 +37,19 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
 
     code_array[x] = code_string4;
 
-    let code_string5 = code_array[x].replace(" ! ","&");
+    let code_string5 = code_array[x].replaceAll(" ! ","&");
 
     code_array[x] = code_string5;
 
     // content of for loop removes any unnecessary characters to simplify the strings of code
 
   }
-
+  
   let content = "";
 
   for (let y = 0; y < code_array.length; y++) {
     const code_bits = code_array[y].split("&"); // Splits each line of code into arrays of code keywords and values
-
+    
     // C# output to TS output
     
     if (code_bits[0] == "Console.WriteLine" || code_bits[0] == "Console.Write") { 
@@ -72,6 +72,32 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
       content += "\nlet " + code_bits[1] + " = " + code_bits[2] + ";";
 
       
+    } else if (code_bits[0] == "re") {
+
+      /* variable re-declaration: 
+      
+      variableName = newValue;
+      
+      is allowed after initial declaration */
+      
+      content += "\n" + code_bits[1] + " = " + code_bits[2] + ";";
+      
+    } else if (code_bits[0] == "empty") {
+
+      /* Empty variable declaration:
+      string hello; (C#)
+      to
+      let hello; (JS)
+      */
+      
+      content += "\nlet " + code_bits[2] + ";";
+      
+    } else if (code_bits[0] == "const") {
+
+      // Const variable declaration
+
+      content += "\nconst " + code_bits[2] + " = " + code_bits[3] + ";";
+      
     }
   }
 
@@ -86,4 +112,6 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
   console.log("Compiler ran successfully");
   
 });
+
+
 
