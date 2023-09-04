@@ -2,25 +2,48 @@
 
 ## Version
 
-> **Current: Version 2.0:**
+> **Current Version: Version 3.0**
+> - The compiler now allows reassignment of variable values, declaration of empty variables, and const variable declaration
+
+Reassignment:
+
+~~~csharp
+string variableName = "value";
+variableName = "newValue";
+~~~
+
+Empty Variables:
+
+~~~csharp
+string variableName;
+variableName = "value";
+~~~
+
+Const:
+
+~~~csharp
+const string variableName = "value";
+~~~
+
+
+> *Previous versions:*
 >
-> **The compiler now supports C# variable declarations of types string, int, double, char, bool, float, and long**
+> - Version 2.0:
+>   - The compiler now supports C# variable declarations of types string, int, double, char, bool, float, and long
 >
-> The C# variable declaration must be in this format:
+>   - The C# variable declaration must look like this format:
 
 ~~~csharp
 string variableName = "value"; 
 ~~~
 
 
-> *Previous versions:*
-> 
-> 1. Version 1.0:
->  The compiler supports C# Console.WriteLine, Console.Write, and comments
+> - Version 1.0:
+>   - The compiler supports C# Console.WriteLine, Console.Write, and comments
+>   - 
+>  - The number before the decimal is increased each time support for a C# feature is added to the compiler code
 >
-> The number before the decimal is increased each time support for a C# feature is added to the compiler code
->
-> The number after the decimal is increased if other changes to the code occur (e.g.: bug fixes, minor edits, etc.)
+>  - The number after the decimal is increased if other changes to the code occur (e.g.: bug fixes, minor edits, etc.)
 
 ## License
 MIT License (free to use)
@@ -36,8 +59,12 @@ A JavaScript-based compiler that converts C# into TypeScript that can then be ru
 
 1. If using Replit, fork this project.
 2. If using VSCode, fork the GitHub repository and import into VSCode. Then install the latest version of NodeJS and any neccessary extensions.
-3. Edit the C# code until it's what you desire. **For comments, be sure to replace the space between the // symbol and the comment text with the & symbol. For variable declaration, put " ! " (without the quotes) between the type and variable name**.
-4. Then, run the project. Check the output.ts file for the compiled code. If the compiler is used for web applications, use this command in your terminal/shell:
+3. Edit the C# code until it's what you desire.
+4. **For comments, be sure to replace the space between the // symbol and the comment text with the & symbol.**
+5. **For variable declaration, put " ! " (without the quotes) between the type and variable name**.
+6. **For redeclaring variable values, put "re ! " (no quotes) in front of the variable name**
+7. **For declaring empty variables, type in the keyword "empty" (w/o quotes), the variable type, and the value all separated by " ! " (w/o quotes)**
+8. Then, run the project. Check the output.ts file for the compiled code. If the compiler is used for web applications, use this command in your terminal/shell:
 
 ~~~sh 
 node index.js 
