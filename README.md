@@ -2,7 +2,14 @@
 
 ## Version
 
-> **Current Version: Version 3.0**
+> **Current Version: Version 4.0**
+> The compiler now supports number and string type conversion
+> Number: ConvertToInt32() -> Number()
+> String: ConvertToString() -> String()
+
+
+> *Previous versions:*
+> - Version 3.0:
 > - The compiler now allows reassignment of variable values, declaration of empty variables, and const variable declaration
 
 Reassignment:
@@ -26,8 +33,6 @@ const string variableName = "value";
 ~~~
 
 
-> *Previous versions:*
->
 > - Version 2.0:
 >   - The compiler now supports C# variable declarations of types string, int, double, char, bool, float, and long
 >
@@ -64,7 +69,8 @@ A JavaScript-based compiler that converts C# into TypeScript that can then be ru
 5. **For variable declaration, put " ! " (without the quotes) between the type and variable name**.
 6. **For redeclaring variable values, put "re ! " (no quotes) in front of the variable name**
 7. **For declaring empty variables, type in the keyword "empty" (w/o quotes), the variable type, and the value all separated by " ! " (w/o quotes)**
-8. Then, run the project. Check the output.ts file for the compiled code. If the compiler is used for web applications, use this command in your terminal/shell:
+8. **Type conversion functions can only be in a Console.Write or Console.WriteLine**
+9. Then, run the project. Check the output.ts file for the compiled code. If the compiler is used for web applications, use this command in your terminal/shell:
 
 ~~~sh 
 node index.js 
