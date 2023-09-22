@@ -25,15 +25,15 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
 
     code_array[x] = code_string;
 
-    let code_string2 = code_array[x].replace("(","&"); // & is used to separate the code parts in case any parameter text used in the C# code contains spaces (i.e.: Console.WriteLine("Hello world")), since the code lines are split into a list later on
+    let code_string2 = code_array[x].replaceAll("(","&"); // & is used to separate the code parts in case any parameter text used in the C# code contains spaces (i.e.: Console.WriteLine("Hello world")), since the code lines are split into a list later on
 
     code_array[x] = code_string2;
 
-    let code_string3 = code_array[x].replace(")","");
+    let code_string3 = code_array[x].replaceAll(")","");
 
     code_array[x] = code_string3;
 
-    let code_string4 = code_array[x].replace(" = ","&");
+    let code_string4 = code_array[x].replaceAll(" = ","&");
 
     code_array[x] = code_string4;
 
@@ -44,6 +44,7 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
     // content of for loop removes any unnecessary characters to simplify the strings of code
 
   }
+
   
   let content = "";
 
@@ -54,8 +55,31 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
     
     if (code_bits[0] == "Console.WriteLine" || code_bits[0] == "Console.Write") { 
 
-      content += "\nconsole.log("+code_bits[1]+");";
+      /* Type casting in format: 
+      Console.Write(Convert.ToString(x));
+      or
+      Console.Write(Convert.ToInt32(x));
+      */
+      
+      
+      if (code_bits[1] == "Convert.ToString") {
+        
+        content += "\nconsole.log(" + "String(" + code_bits[2] + ")" + ");";
+        
+      } else if (code_bits[1] = "Convert.ToInt32") {
+        
+        content += "\nconsole.log(" + "Number(" + code_bits[2] + ")" + ");";
+        
+      } else {
+        
+        content += "\nconsole.log("+code_bits[1]+");";
+        
       // To prevent the lines of code from overwriting each other, they must be added to the same string and can then be written into the file
+        
+      }
+      
+
+      
       
     } else if (code_bits[0] == "//") {
 
@@ -68,7 +92,7 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
       /* variable declaration: 
       [type] variableName = value; -> 
       let variableName = value; */
-
+      
       content += "\nlet " + code_bits[1] + " = " + code_bits[2] + ";";
 
       
@@ -112,6 +136,4 @@ fs.readFile("input.cs", "utf8", (err, data) => { // gets content of C# file
   console.log("Compiler ran successfully");
   
 });
-
-
 
