@@ -1,4 +1,3 @@
 
-const hello = "bruh";
-console.log(hello);
+console.log(String(21));
 // bruh
